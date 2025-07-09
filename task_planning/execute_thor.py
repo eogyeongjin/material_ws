@@ -57,8 +57,8 @@ class Thor:
             width=1280,
             height=720,
             fieldOfView=90,
-            platform=Linux64, # Use Linux64 for local rendering
-            headless=False,
+            platform=CloudRendering, # Use Linux64 for local rendering
+            headless=True,
             snapGrid=False
         )
         self.controller.step(action="DisableTemperatureDecay")
