@@ -4,6 +4,7 @@ matplotlib
 tqdm
 sentence_transformers
 seaborn
+pyperplan
 imageio
 pillow
 imageio-ffmpeg
