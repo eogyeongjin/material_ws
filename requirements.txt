@@ -1,0 +1,9 @@
+ai2thor
+openai
+matplotlib
+tqdm
+sentence_transformers
+seaborn
+imageio
+pillow
+imageio-ffmpeg

@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# AI2-THOR 출력
+task_planning/ego_img/
+task_planning/events/
+task_planning/plan_execution.mp4/

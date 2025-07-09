@@ -1,0 +1,5 @@
+(open drawer)
+(pick-up fork table)
+(place-in fork drawer)
+(pick-up spoon table)
+(place-in spoon drawer)

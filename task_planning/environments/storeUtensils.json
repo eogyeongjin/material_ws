@@ -1,0 +1,51 @@
+{
+  "task_idx": 1,
+  "task": "storeUtensils",
+  "scene": "FloorPlan2",
+  "robot_init_state": {
+    "position": {
+      "x": 1.0,
+      "y": 0.9,
+      "z": -0.75
+    },
+    "rotation": {
+      "x": 0,
+      "y": 180.0,
+      "z": 0
+    },
+    "horizon": 50.0
+  },
+  "objects_init_state": [
+    {
+      "objectType": "Fork",
+      "objectName": "Fork_40ceb846",
+      "position": {
+        "x": 1.0,
+        "y": 0.93,
+        "z": -1.41
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": -0.0,
+        "z": 0.0
+      },
+      "property": {}
+    },
+    {
+      "objectType": "Spoon",
+      "objectName": "Spoon_ab4315e1",
+      "position": {
+        "x": 0.89,
+        "y": 0.93,
+        "z": -1.41
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": -0.0,
+        "z": 0.0
+      },
+      "property": {}
+    }
+  ]
+  
+}

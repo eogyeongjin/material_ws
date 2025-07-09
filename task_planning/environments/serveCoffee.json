@@ -1,0 +1,391 @@
+{
+  "task_idx": 5,
+  "task": "serveCoffee",
+  "scene": "FloorPlan22",
+  "robot_init_state": {
+    "position": {
+      "x": -2.0,
+      "y": 0.9,
+      "z": 0.4
+    },
+    "rotation": {
+      "x": 0,
+      "y": 270.0,
+      "z": 0
+    },
+    "horizon": 40.0
+  },
+  "init_objects": [
+    "mug", "coffeemachine", "countertop", "fridge"
+  ],
+  "command": [
+    "Get coffee in a mug, and place the mug in the fridge",
+    "Serve coffee into a mug and put the mug in the fridge",
+    "Dispense coffee from the machine into a cup",
+    "Fill a mug with coffee from the coffeemaker",
+    "Extract coffee from the coffeemaker into a mug",
+    "Brew coffee from the machine into a cup",
+    "Get coffee from the coffeemaker and pour it into a mug",
+    "Collect coffee from the machine in a mug",
+    "Serve coffee from the coffeemaker into a cup",
+    "Draw coffee from the coffeemaker into a mug"
+  ],
+  "goal_condition": [
+    "Mug must be filled with coffee",
+    "Mug must be in fridge"
+  ],
+  "init_state": [
+    "mug is on countertop",
+    "coffeemachine is off",
+    "fridge is closed"
+  ],
+  "gt_plan": {
+    "1": "pick up mug",
+    "2": "place mug on coffeemachine",
+    "3": "turn on coffeemachine",
+    "4": "turn off coffeemachine",
+    "5": "open fridge",
+    "6": "pick up mug",
+    "7": "place mug in fridge",
+    "8": "close fridge"
+  },
+  "objects_init_state": [
+    {
+      "objectType": "CoffeeMachine",
+      "objectName": "CoffeeMachine_7eed2c49",
+      "position": {
+        "x": -2.8,
+        "y": 0.9,
+        "z": 0.1
+      },
+      "rotation": {
+        "x": -0.0,
+        "y": 90.0,
+        "z": 0.0
+      },
+      "property": {}
+    },
+    {
+      "objectType": "Mug",
+      "objectName": "Mug_7f8551ca",
+      "position": {
+        "x": -2.4,
+        "y": 0.9,
+        "z": 0.24
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "property": {}
+    }
+  ],
+  "changes": {
+    "0": {
+      "condition": [
+        {
+          "objectType": "Mug",
+          "state": { "parentReceptacles": "CoffeeMachine" }
+        }
+      ],
+      "change": [
+        {
+          "action": "PickupObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Mug",
+              "state": { "isPickedUp": false }
+            },
+            "forceAction": true,
+            "manualInteract": false
+          }
+        },
+        {
+          "action": "PutObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "CounterTop"
+            },
+            "forceAction": true,
+            "placeStationary": true
+          }
+        }
+      ]
+    },
+    "1": {
+      "condition": [
+        {
+          "objectType": "Robot",
+          "state": { "isHolding": "Mug" }
+        },
+        {
+          "objectType": "Mug",
+          "state": { "isFilledWithLiquid": false }
+        }
+      ],
+      "change": [
+        {
+          "action": "MoveHeldObjectAhead",
+          "action_args": {
+            "moveMagnitude": -0.5,
+            "forceVisible": true
+          }
+        },
+        {
+          "action": "MoveHeldObjectRight",
+          "action_args": {
+            "moveMagnitude": 0.7,
+            "forceVisible": true
+          }
+        },
+        {
+          "action": "DropHandObject",
+          "action_args": {
+            "forceAction": true
+          }
+        }
+      ]
+    },
+    "2": {
+      "condition": [
+        {
+          "objectType": "Robot",
+          "state": { "isHolding": "Mug" }
+        },
+        {
+          "objectType": "Mug",
+          "state": { "isFilledWithLiquid": true }
+        }
+      ],
+      "change": [
+        {
+          "action": "MoveHeldObjectAhead",
+          "action_args": {
+            "moveMagnitude": -0.5,
+            "forceVisible": true
+          }
+        },
+        {
+          "action": "MoveHeldObjectRight",
+          "action_args": {
+            "moveMagnitude": 0.7,
+            "forceVisible": true
+          }
+        },
+        {
+          "action": "DropHandObject",
+          "action_args": {
+            "forceAction": true
+          }
+        },
+        {
+          "action": "EmptyLiquidFromObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Mug",
+              "state": { "isFilledWithLiquid": true }
+            },
+            "forceAction": false
+          }
+        }
+      ]
+    },
+    "3": {
+      "condition": [
+        {
+          "objectType": "Robot",
+          "state": { "isHolding": "Mug" }
+        }
+      ],
+      "change": [
+        {
+          "action": "ToggleObjectOn",
+          "action_args": {
+            "objectId": {
+              "objectType": "CoffeeMachine"
+            },
+            "forceAction": true
+          }
+        }
+      ]
+    },
+    "4": {
+      "condition": [
+        {
+          "objectType": "CoffeeMachine",
+          "state": { "isToggled": true }
+        }
+      ],
+      "change": [
+        {
+          "action": "ToggleObjectOff",
+          "action_args": {
+            "objectId": {
+              "objectType": "CoffeeMachine"
+            },
+            "forceAction": true
+          }
+        },
+        {
+          "action": "EmptyLiquidFromObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Mug",
+              "state": { "isFilledWithLiquid": true }
+            },
+            "forceAction": false
+          }
+        },
+        {
+          "action": "PickupObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Mug",
+              "state": { "isPickedUp": false }
+            },
+            "forceAction": true,
+            "manualInteract": true
+          }
+        },
+        {
+          "action": "PutObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "CounterTop"
+            },
+            "forceAction": true,
+            "placeStationary": true
+          }
+        }
+      ]
+    },
+    "5": {
+      "condition": [
+        {
+          "objectType": "Mug",
+          "state": { "parentReceptacles": "Fridge" }
+        }
+      ],
+      "change": [
+        {
+          "action": "PickupObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Mug",
+              "state": { "parentReceptacles": "Fridge", "isPickedUp": false }
+            },
+            "forceAction": true
+          }
+        },
+        {
+          "action": "PutObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "CounterTop"
+            },
+            "forceAction": true,
+            "placeStationary": true
+          }
+        }
+      ]
+    },
+    "6": {
+      "condition": [
+        {
+          "objectType": "CoffeeMachine",
+          "state": { "isToggled": true }
+        }
+      ],
+      "change": [
+        {
+          "action": "OpenObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Fridge"
+            },
+            "forceAction": true
+          }
+        }
+      ]
+    },
+    "7": {
+      "condition": [
+        {
+          "objectType": "Robot",
+          "state": { "isHolding": "Mug" }
+        },
+        {
+          "objectType": "Mug",
+          "state": { "isFilledWithLiquid": true }
+        }
+      ],
+      "change": [
+        {
+          "action": "CloseObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Fridge"
+            },
+            "forceAction": true
+          }
+        }
+      ]
+    },
+    "8": {
+      "condition": [
+        {
+          "objectType": "CoffeeMachine",
+          "state": { "isToggled": false }
+        },
+        {
+          "objectType": "Mug",
+          "state": { "isFilledWithLiquid": true }
+        }
+      ],
+      "change": [
+        {
+          "action": "EmptyLiquidFromObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Mug",
+              "state": { "isFilledWithLiquid": true }
+            },
+            "forceAction": false
+          }
+        }
+      ]
+    },
+    "9": {
+      "condition": [
+        {
+          "objectType": "Fridge",
+          "state": { "isOpen": true }
+        }
+      ],
+      "change": [
+        {
+          "action": "PickupObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Mug",
+              "state": { "parentReceptacles": "CoffeeMachine" }
+            },
+            "forceAction": true,
+            "manualInteract": true
+          }
+        },
+        {
+          "action": "PutObject",
+          "action_args": {
+            "objectId": {
+              "objectType": "Fridge"
+            },
+            "forceAction": true,
+            "placeStationary": false
+          }
+        }
+      ]
+    }
+  }
+}
