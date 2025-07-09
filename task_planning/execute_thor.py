@@ -57,7 +57,7 @@ class Thor:
             width=1280,
             height=720,
             fieldOfView=90,
-            platform=CloudRendering, # Use Linux64 for local rendering
+            platform=Linux64, # Use Linux64 for local rendering
             headless=False,
             snapGrid=False
         )
