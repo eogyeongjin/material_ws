@@ -1,6 +1,0 @@
-(open fridge)
-(pick-up mug countertop)
-(place-on mug coffeemachine)
-(turn-on coffeemachine mug)
-(pick-up mug coffeemachine)
-(place-in mug fridge)
