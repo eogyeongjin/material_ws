@@ -5,6 +5,6 @@ venv/
 .venv/
 
 # AI2-THOR 출력
-task_planning/ego_img/
-task_planning/events/
-task_planning/plan_execution.mp4/
+task_planning/test/ego_img/
+task_planning/test/events/
+task_planning/test/plan_execution.mp4
