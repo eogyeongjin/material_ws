@@ -9,5 +9,8 @@ task_planning/test/ego_img/
 task_planning/test/events/
 task_planning/test/plan_execution.mp4
 
-# PDDL Files
-task_planning/pddl_files/
+# PDDL Files — 내부 파일 모두 무시
+task_planning/pddl_files/*
+
+# 단, .gitkeep 파일은 예외로 남겨 디렉토리만 트래킹
+!task_planning/pddl_files/.gitkeep
