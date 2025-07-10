@@ -8,3 +8,6 @@ venv/
 task_planning/test/ego_img/
 task_planning/test/events/
 task_planning/test/plan_execution.mp4
+
+# PDDL Files
+task_planning/pddl_files/
